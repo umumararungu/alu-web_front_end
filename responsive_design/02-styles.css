@@ -184,7 +184,7 @@
       ============================= */
   
   .container {
-    width: 960px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -859,13 +859,3 @@
     cursor: text;
     margin: 0 1rem;
   }
-/* .hero-homepage{
-    background-position: 65% 8rem;
-    background-size: 90rem auto;
-}
-.section-hero{
-    min-height: 35vh;
-}
-.section-inner{
- min-height: 35vh;
-} */
