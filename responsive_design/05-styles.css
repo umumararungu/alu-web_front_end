@@ -286,7 +286,10 @@
     background-color: var(--color-primary);
     width: 100%;
   }
-  .header .nav {
+  
+}
+
+.header .nav {
     flex-direction: column;
     overflow: hidden;
     max-height: 0;
@@ -328,7 +331,6 @@
   .header .menu-icon .navicon::after {
     top:-.7rem;
   }
-}
   /* Header
       ============================= */
   
