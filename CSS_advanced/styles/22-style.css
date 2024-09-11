@@ -125,6 +125,7 @@ background-color: var(--color-light-grey);
 
     --section-tagline-margin:0
 
+
 }
 h1,h2,h3,h4,h5,h6{
     font-family: var(--font-family-title);
@@ -202,4 +203,10 @@ text-align: right;
     float: left;
     padding:0.5rem;
 
+}
+
+[data-section-theme="dark"]{
+    --text-color:var(--color-white);
+    --section-title-color:var(--color-white);
+    background-color: var(--color-black);
 }
