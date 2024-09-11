@@ -193,8 +193,9 @@ h1,h2,h3,h4,h5,h6{
 .footer ul{
 text-align: right;
 }
+
 .row::after{
-    content: 0;
+    content: "";
     display: table;
-    float: none;
+    clear: both;
 }
