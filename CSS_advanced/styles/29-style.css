@@ -230,7 +230,7 @@ h6 {
 }
 
 .nav .nav-link:hover {
-    background-color: var(--color-white);
+    background-color:var(--color-white);
 }
 
 .nav .nav-link::before {
