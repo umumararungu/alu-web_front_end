@@ -225,7 +225,7 @@ display: block;
 }
 
 .card-services .card-title{
-    margin: none;
+    margin: 0;
 }
 
 .card-services.a{
@@ -235,7 +235,7 @@ display: block;
 
 }
 
-.card-services.a:hover{
+.card-services a:hover{
     color:var(--color-white);
     background-color: var(--color-primary);
     text-decoration: none;
