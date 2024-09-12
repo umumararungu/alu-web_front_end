@@ -217,12 +217,9 @@ text-align: right;
 }
 
 .social-link{
-    position:absolute;
-    z-index: -1;
-    left: -10000px;
-    top: auto;
+display: block;
 }
 
 .social-link .svg{
-    color: var(--text-color);
+    fill: var(--text-color);
 }
