@@ -416,10 +416,10 @@ content: "";
 }
 
 .card-testimonial .card-quote::before{
-content:\201C;
+content:"\201C";
 position: absolute;
 top: -4.5rem;
-bottom: -1rem;
+left: -1rem;
 color:#efeded;
 font-size: 10rem;
 z-index: -1;
