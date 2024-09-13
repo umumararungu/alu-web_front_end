@@ -384,7 +384,7 @@ ul.row {
 
 }
 
-.card-work .card-title{
+.card-work .card-outer{
     text-align: center;
     margin: 0;
     opacity: 0.9;
