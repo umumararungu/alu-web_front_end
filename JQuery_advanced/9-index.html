@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Task 8</title>
+    <title>Task 9</title>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
         <style>
@@ -22,6 +22,10 @@
             }
             #pagination li.active {
               font-weight: bold;
+            }
+            /* CSS for loading state */
+            .loading {
+              opacity: 0.2;
             }
           </style>
         </head>
@@ -72,8 +76,20 @@
               $("ul").append(listItem);
             }
       
+            // Function to display or hide the loading state
+            function displayLoading(loading) {
+              var firstUl = $("ul").first();
+              if (loading) {
+                firstUl.wrap('<div class="loading"></div>');
+              } else {
+                firstUl.unwrap();
+              }
+            }
+      
             // Function to query Wikipedia using AJAX with pagination support
             function queryWikipedia(search, offset = 0) {
+              displayLoading(true); // Show loading state
+      
               // API endpoint and parameters for Wikipedia search
               var apiUrl = "https://en.wikipedia.org/w/api.php";
               var params = {
@@ -91,26 +107,28 @@
                 data: params,
                 dataType: "jsonp",
                 success: function (response) {
+                  displayLoading(false); // Hide loading state
+      
                   var totalHits = response.query.searchinfo.totalhits;
                   var itemsPerPage = 10;
-                  addNewArticleHeader(totalHits, itemsPerPage, offset);
+      
+                  // Clear previous results and pagination
+                  $("ul").first().empty();
+                  $("#pagination").empty();
+      
+                  // Add new articles
                   response.query.search.forEach(function (result) {
                     addNewArticle(result.pageid, result.title, result.snippet);
                   });
+      
+                  // Build pagination
                   buildPagination(totalHits, itemsPerPage, offset);
                 },
                 error: function (error) {
+                  displayLoading(false); // Hide loading state
                   console.error("Error fetching data from Wikipedia:", error);
                 },
               });
-            }
-      
-            function addNewArticleHeader(totalHits, itemsPerPage, offset) {
-              var start = offset + 1;
-              var end = Math.min(offset + itemsPerPage, totalHits);
-              var headerText = `Displaying results ${start} - ${end} of ${totalHits}`;
-              var header = $("<h2>").text(headerText);
-              $("body").prepend(header);
             }
       
             // Function to build pagination based on total items and items per page
@@ -120,7 +138,7 @@
       
               for (var i = 0; i < totalPages; i++) {
                 var pageNumber = i + 1;
-                var listItem = $("<li>").text(pageNumber).addClass("pagination-item");
+                var listItem = $("<li>").text(pageNumber);
       
                 if (i * itemsPerPage === currentOffset) {
                   listItem.addClass("active");
